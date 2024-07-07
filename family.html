@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Family</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad:wght@500&family=Bebas+Neue&family=Gloria+Hallelujah&family=Josefin+Sans:wght@400;500&family=Jost:wght@500&family=League+Spartan:wght@500&family=Love+Ya+Like+A+Sister&family=Poppins:wght@600&family=Rouge+Script&family=Schoolbell&family=Silkscreen&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+:root{
+  --gold:#c9a14d;
+}
+*{
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+  font-family: 'Josefin Sans', sans-serif;
+  outline: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: .2s linear;
+}
+html, body{
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background: #C0C0C0;
+}
+section{
+  padding: 2rem 9%;
+}
+.heading{
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  padding: 1rem;
+  margin: 2rem 0;
+  background: #222;
+}
+.heading span{
+  color:var(--gold);
+}
+header{
+  position: fixed;
+  top:0; left:0; right:0;
+  background: white;
+  box-shadow: 0 5px 10px rgba(0,0,0,.1);
+  padding: 0px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+header .logo{
+  font-weight: bolder;
+  font-size: 25px;
+  color: black;
+}
+header .logo span{
+  color:var(--gold);
+}
+header .navbar ul{
+  list-style: none;
+}
+header .navbar ul li{
+  position: relative;
+  float: left;
+}
+header .navbar ul li a{
+  font-size: 20px;
+  padding: 20px;
+  color: #333;
+  display: block;
+}
+header .navbar ul li a:hover{
+  background: #333;
+  color:var(--gold);
+}
+header .navbar ul li ul{
+  position: absolute;
+  left: 0;
+  width: 200px;
+  background: #fff;
+  display: none;
+}
+header .navbar ul li ul li{
+  width: 100%;
+  border-top: 1px solid rgba(0,0,0,.1);
+}
+header .navbar ul li ul li ul{
+  left: 200px;
+  top: 0;
+}
+header .navbar ul li:focus-within > ul,
+header .navbar ul li:hover > ul{
+  display: initial;
+}
+#menu-bar{
+  display: none;
+}
+header label{
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  display: none;
+}
+.active{
+  background-color: #808080;
+}
+.home{
+  display: flex;
+  align-items: center;
+  min-height: 70vh;
+  background: url(images/header3.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.home .content{
+  max-width: 50rem;
+}
+.home .content h3{
+  font-size: 4rem;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+.home .content span{
+  font-size: 1.8rem;
+  color:var(--gold);
+  padding: 1rem 0;
+  line-height: 1.5;
+  text-transform: none;
+}
+.home .content p{
+  font-size: 1.3rem;
+  color: white;
+  padding: 1rem 0;
+  line-height: 1.5;
+  text-transform: none;
+}
+.about .wrapper{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.card{
+  width: 280px;
+  height: 360px;
+  padding: 2rem 1rem;
+  background: #fff;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  box-shadow: 0px 7px 10px rgba(0,0,0,0.5);
+  transition: 0.5s ease-in-out;
+}
+.card:hover{
+  transform: translateY(20px);
+}
+.card:before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,176,155,0.5), rgba(150,201,61,1));
+  z-index: 2;
+  transition: 0.5s all;
+  opacity: 0;
+}
+.card:hover:before{
+  opacity: 1;
+}
+.card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.card .info{
+  position: relative;
+  z-index: 3;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.5s all;
+}
+.card:hover .info{
+  opacity: 1;
+  transform: translateY(0px);
+}
+.card .info h1{
+  margin: 0;
+}
+.card .info p{
+  letter-spacing: 1px;
+  font-size: 15px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+.table_responsive{
+  max-width: 1350px;
+  border: 3px solid #FF1493;
+  background-color: #efefef33;
+  padding: 15px;
+  overflow: auto;
+  margin: auto;
+  border-radius: 4px;
+}
+table{
+  width: 100px;
+  font-size: 15px;
+  color: #333;
+  white-space: nowrap;
+  border-collapse: collapse;
+}
+table>th{
+  background-color: #00bcd4;
+  color: #fff;
+}
+table>th th{
+  padding: 15px;
+}
+table th,
+table td{
+  border: 1px solid #00000017;
+  padding: 10px 15px;
+}
+table>tbody>tr>td>img{
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 4px solid #fff;
+  box-shadow: 0 2px 6px #0003;
+}
+table>tbody>tr{
+  background-color: #fff;
+  transition: 0.3s ease-in-out;
+}
+table>tbody>tr:nth-child(even){
+  background-color: rgb(238, 238, 238);
+}
+
+/* Styles for Honorable Mentions */
+.honorable-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px; /* Add some space between cards */
+}
+.honorable-mentions .card {
+  width: 320px;
+  height: 320px;
+  margin: 15px;
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+.honorable-mentions .card .box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: 1s ease;
+}
+.honorable-mentions .card:hover .box {
+  transform: rotateY(180deg);
+}
+.honorable-mentions .card .box .imgBx {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.honorable-mentions .card .box .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.honorable-mentions .card .box .contentBx {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #333;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+}
+.honorable-mentions .card .box .contentBx div {
+  transform-style: preserve-3d;
+  padding: 20px;
+  background: linear-gradient(45deg, #fe0061, #ffeb3b);
+  transform: translateZ(100px);
+}
+.honorable-mentions .card .box .contentBx div h2 {
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+.honorable-mentions .card .box .contentBx div p {
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+@media (max-width:991px){
+  html{
+    font-size: 55%;
+  }
+  header{
+    padding: 2rem;
+    padding: 20px;
+  }
+  header label{
+    display: initial;
+  }
+  header .navbar{
+    position: absolute;
+    top:100%; left:0; right:0;
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,.1);
+    display: none;
+  }
+  header .navbar ul li{
+    width: 100%;
+  }
+  header .navbar ul li ul{
+    position: relative;
+    width: 100%;
+  }
+  header .navbar ul li ul li{
+    background: #eee;
+  }
+  header .navbar ul li ul li ul{
+    width: 100%;
+    left: 0;
+  }
+  #menu-bar:checked ~ .navbar{
+    display: initial;
+  }
+  section{
+    padding: 2rem;
+  }
+  .home{
+    background-position: left;
+  }
+}
+@media (max-width:768px){
+  .home .content h3{
+    font-size: 5rem;
+  }
+  .home .content span{
+    font-size: 2.5rem;
+  }
+}
+@media (max-width:450px){
+  html{
+    font-size: 50%;
+  }
+  .heading{
+    font-size: 3rem;
+  }
+}
+</style>
+
+<body>
+<header>
+
+<a href="#" class="logo">Sha<span>za</span></a>
+
+<input type="checkbox" id="menu-bar">
+<label for="menu-bar">Menu</label>
+
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about-me.html">About Me</a></li>
+    <li><a href="#" class="active">My Family</a></li>
+    <li><a href="education.html">Education & Experiences</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+  </ul>
+</nav>
+</header>
+
+<section class="home" id="home">
+  <div class="content">
+    <h3>My Family</h3>
+    <span>At the core of existence lies the profound meaning of family.</span>
+    <p>Where laughter is plentiful, love is endless, and memories are timeless.</p>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <h1 class="heading"> Meet My <span> Family </span></h1>
+  <div class="wrapper">
+    <div class="card">
+      <img src="images/parents.jpg" alt="Mom & Dad">
+      <div class="info">
+        <h1>Mom & Dad</h1>
+        <p>This is my parents</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/mom.jpg" alt="My mother">
+      <div class="info">
+        <h1>My mother</h1>
+        <p>This is one of my life's guardian</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/cousin.jpg" alt="My cousin">
+      <div class="info">
+        <h1>My cousin</h1>
+        <p>This is my sister by heart</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/cousin2.jpg" alt="My cousin">
+      <div class="info">
+        <h1>My cousin</h1>
+        <p>Meet my lil sister</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/aunt.jpg" alt="My aunt">
+      <div class="info">
+        <h1>My aunt</h1>
+        <p>This is my loving aunty</p>
+      </div>
+    </div>
+	
+	<div class="card">
+      <img src="images/aunt2.jpg" alt="My aunt">
+      <div class="info">
+        <h1>My aunt</h1>
+        <p>This is my sweet aunty and easygoing uncle</p>
+      </div>
+    </div>
+	
+	<div class="card">
+      <img src="images/uncle.jpg" alt="My aunt">
+      <div class="info">
+        <h1>My uncle</h1>
+        <p>This is my sweet uncle with my loving aunty</p>
+      </div>
+    </div>
+	
+  </div>
+</section>
+
+
+<section class="honorable-mentions" id="honorable-mentions">
+  <h1 class="heading"> Honorable <span> Mentions </span></h1>
+  <div class="honorable-wrapper">
+    <div class="card">
+      <div class="box">
+        <div class="imgBx">
+          <img src="images/salmizi.jpg" alt="Salmizi Ismail">
+        </div>
+        <div class="contentBx">
+          <div>
+            <h2>Salmizi Ismail</h2>
+            <p>A loving father, a dedicated educator, and a ray of sunshine. May God bless him, rest in peace.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="box">
+        <div class="imgBx">
+          <img src="images/yan.jpg" alt="Nurul Izyan">
+        </div>
+        <div class="contentBx">
+          <div>
+            <h2>Nurul Izyan</h2>
+            <p>A sweet and responsible friend. My savior through the darkest times.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="box">
+        <div class="imgBx">
+          <img src="images/adzin.jpg" alt="Adzin Abu Bakar">
+        </div>
+        <div class="contentBx">
+          <div>
+            <h2>Adzin Abu Bakar</h2>
+            <p>To a thriving businessman and a diligent lecturer. Without whom, this website might have not been accomplished.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>  
+    
+
+<section class="about" id="about">
+  <audio controls autoplay loop>
+    <source src="audios/afterdark.mp3" type="audio/mp3">
+  </audio>
+</section>
+
+</body>
+</html>

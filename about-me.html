@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device=width, initial-scale=1.0">
+<title>About Me</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad:wght@500&family=Bebas+Neue&family=Gloria+Hallelujah&family=Josefin+Sans:wght@400;500&family=Jost:wght@500&family=League+Spartan:wght@500&family=Love+Ya+Like+A+Sister&family=Poppins:wght@600&family=Rouge+Script&family=Schoolbell&family=Silkscreen&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+:root{
+--gold:#c9a14d;
+}
+*{
+margin: 0; padding: 0;
+box-sizing: border-box;
+font-family: 'Josefin Sans', sans-serif;
+outline: none;
+text-decoration: none;
+text-transformation: capitalize;
+transition: .2s linear;
+}
+html, body{
+scroll-behavior: smooth;
+scroll-padding-top: 6rem;
+overflow-x: hidden;
+min-height: 100vh;
+background: #C0C0C0;
+}
+section{
+padding: 2rem 9%;
+}
+.heading{
+text-align: center;
+font-size: 2.5rem;
+color: white;
+padding: 1rem;
+margin: 2rem 0;
+background: #222;
+}
+.heading span{
+color:var(--gold);
+}
+header{
+position: fixed;
+top:0; left:0; right:0;
+background: white;
+box-shadow: 0 5px 10px rgba(0,0,0,.1);
+padding: 0px 7%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+z-index: 1000;
+}
+header .logo{
+font-weight: bolder;
+font-size: 25px;
+color: black;
+}
+header .logo span{
+color:var(--gold);
+}
+header .navbar ul{
+list-style: none;
+}
+header .navbar ul li{
+position: relative;
+float: left;
+}
+header .navbar ul li a{
+font-size: 20px;
+padding: 20px;
+color: #333;
+display: block;
+}
+header .navbar ul li a:hover{
+background: #333;
+color:var(--gold);
+}
+header .navbar ul li ul{
+position: absolute;
+left: 0;
+width: 200px;
+background: #fff;
+display: none;
+}
+header .navbar ul li ul li{
+width: 100%;
+border-top: 1px solid rgba(0,0,0,.1);
+}
+header .navbar ul li ul li ul{
+left: 200px;
+top: 0;
+}
+header .navbar ul li:focus-within > ul,
+header .navbar ul li:hover > ul{
+display: initial;
+}
+#menu-bar{
+display: none;
+}
+header label{
+font-size: 20px;
+color: #333;
+cursor: pointer;
+display: none;
+}
+.active{
+background-color: #808080;
+}
+.home{
+display: flex;
+align-items: center;
+min-height: 70vh;
+background: url('images/head.jpg') no-repeat;
+background-size: cover;
+background position: center;
+}
+.home .content{
+max-width: 40rem;
+}
+.home .content h3{
+font-size: 4rem;
+color: #fff;
+text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+.home .content span{
+font-size: 1.8rem;
+color:var(--gold);
+padding: 1rem 0;
+line-height: 1.5;
+}
+.home .content p{
+font-size: 1.3rem;
+color: white;
+padding: 1rem 0;
+line-height: 1.5;
+}
+.about .row{
+display: flex;
+align-items: center;
+gap: 2rem;
+flec-wrap: wrap;
+padding: 2rem 0;
+padding-bottom: 3rem;
+}
+.about .row .image-container{
+flex: 1 1 40rem;
+position: relative;
+}
+.about .row .image-container img{
+width: 100%;
+border: 1.5rem solid #fff;
+border-radius: .5rem;
+box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+height: 100%;
+object-fit: cover;
+}
+.about .row .image-container h3{
+position: absolute;
+top: 70%; transform: translateY(-70%);
+font-size: 3rem;
+background: #fff;
+width: 100%;
+padding: 1rem 2rem;
+text-align: center;
+mix-blend-mode: screen;
+}
+.about .row .content{
+flex: 1 1 40rem;
+}
+.about .row .content h3{
+font-size: 3rem;
+color: #333;
+}
+.about .row .content p{
+font-size: 1.5rem;
+color: #555;
+padding: .5rem 0;
+padding-top: 1rem;
+}
+.video .row{
+display: flex;
+align-items: center;
+gap: 2rem;
+flex-wrap: wrap;
+padding: 2rem 0;
+padding-bottom: 2rem;
+}
+.video .row .video-container{
+flex: 1 1 40rem;
+position: relative;
+}
+.video .row .video-container video{
+width: 100%;
+border: 1.5rem solid #fff;
+border-radius: .5rem;
+box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+height: 50%;
+object-fit: cover;
+}
+.like-content{
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(400px, auto));
+grid-gap: 2rem;
+align-items: center;
+margin-top: 5rem;
+}
+.box{
+background: #ffffff;
+box-shadow: 18px 0px 87px 0px rgb(10 15 70 / 7%);
+border-radius: 12px;
+padding: 45px 45px 45px 45px;
+transition: ease .45s;
+cursor: pointer;
+}
+.box h3{
+font-size: 24px;
+font-weight: 500;
+margin-bottom: 2px;
+}
+.box p{
+font-size: var(--p-font);
+color: var(--secound-color);
+line-height: 28px;
+}
+.box:hover{
+will-change: transform;
+transform: perspective(1000px) rotateX(4.80deg) rotateY(10.23deg) scale3d(1.05,1.05,1.05);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:991px){
+html{
+font-size: 55%;
+}
+header{
+padding: 2rem;
+padding: 20px;
+}
+header label{
+display: initial;
+}
+header .navbar{
+position: absolute;
+top:100%; left:0; right:0;
+background: #fff;
+border-top: 1px solid rgba(0,0,0,.1);
+display: none;
+}
+header .navbar ul li{
+width: 100%;
+}
+header .navbar ul li ul{
+position: relative;
+width: 100%;
+}
+header .navbar ul li ul li{
+background: #eee;
+}
+header .navbar ul li ul li ul{
+width: 100%;
+left: 0;
+}
+#menu-bar:checked ~ .navbar{
+display: initial;
+}
+section{
+padding: 2rem;
+}
+.home{
+background-position: left;
+}
+}
+
+@media (max-width:768px){
+.home .content h3{
+font-size: 5rem;
+}
+.home .content span{
+font-size: 2.5rem;
+}
+}
+@media (max-width:450px){
+html{
+font-size: 50%;
+}
+.heading{
+font-size: 3rem;
+}
+}
+</style>
+
+<body>
+<header>
+
+<a href="#" class="logo">Sha<span>za</span></a>
+
+<input type="checkbox" id="menu-bar">
+<label for="menu-bar">Menu</label>
+
+<nav class="navbar">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="about-me.html"class="active">About Me</a></li>
+<li><a href="family.html">My Family</a></li>
+<li><a href="education.html">Education & Experiences</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="home" id="home">
+<div class="content">
+<h3>About Me</h3>
+<span>A seeker of knowledge, a weaver of experiences, and a collector of moments.</span>
+<p>"Bless those who curse you, pray for those who mistreat you." - Luke 6:28</p>
+</div>
+</section>
+
+<section class="about" id="about">
+<h1 class="heading"><span> About </span> Myself </h1>
+<div class="row">
+<div class="image-container">
+<img src="images/me.jpg">
+<h3>I am Shaza</h3>
+</div>
+
+<div class="content">
+<h3>Hi, I am Shaza Aznan</h3>
+<p>Thank you for visiting my website. I'm delighted to have you here. My name is Shaza—a perpetual learner, independent artist, and eternal optimist. Born under the sign of Sagittarius during a serene night, I am currently in my twenties and embracing life to the fullest. Dive in to learn more about my journey and aspirations.</p>
+</div>
+</div>
+</section>
+
+<section class="video" id="video">
+<div class="row">
+<div class="video-container">
+<video src="videos/shattered-memories.mp4" controls autoplay></video>
+</div>
+</section>
+
+<section class="likes" id="likes"
+<h3 align="center">What I Like</h3>
+<h2>Here is what I love in general.</h2>
+
+<div class="like-content">
+<div class="box">
+<h3>Reading and Writing</h3>
+<p>I have a profound interest in philosophical literature and enjoy reading poetry and poems. Exploring complex ideas through writing allows me to articulate my thoughts and emotions with clarity and depth.</p>
+</div>
+
+<div class="box">
+<h3>Self-reflection and Personal Development</h3>
+<p>I value moments of solitude, using them to reflect on life's intricacies and to cultivate personal growth. It's a crucial period for building oneself both mentally and spiritually, fostering a deeper understanding of life and its complexities.</p>
+</div>
+
+<div class="box">
+<h3>Language Acquisition</h3>
+<p>I am passionate about learning languages as it opens doors to different cultures and perspectives. Mastering new languages not only enhances communication skills but also broadens my worldview.</p>
+</div>
+
+<div class="box">
+<h3>Music Appreciation</h3>
+<p>I have a deep appreciation for music across various genres, and I particularly enjoy playing the piano. Music serves as a creative outlet and a source of inspiration, allowing me to express myself artistically and emotionally.</p>
+</div>
+</div>
+</section>
+
+<section class="likes" id="likes"
+<h3 align="center">My Life Advice</h3>
+<h2>Below is what I wish I understand at early life.</h2>
+
+<div class="like-content">
+<div class="box">
+<p>Your relationship with others is a direct reflection of your relationship with yourself. If you treat yourself poorly, you unconsciously seek out and tolerate others who mistreat you as well. And if you treat yourself with dignity and respect, it's vice versa.</p>
+</div>
+
+<div class="box">
+<p>The only way to feel better about yourself is to do things that are worth feeling good about. Respect is earned, not given.</p>
+</div>
+
+<div class="box">
+<p>You give power to who you blame. If you blame someone for your problems, you unconsciously give them power over you by allowing them to dictate your happiness and well-being.</p>
+</div>
+
+<div class="box">
+<p>Life is short, so spend it wisely and treasure your loved ones. You will never know when will be your last time to see them.</p>
+</div>
+
+<div class="box">
+<p>Motivation isn't the cause of action, but the effect. Force yourself to carry on, then let momentum carry you forward.</p>
+</div>
+
+<div class="box">
+<p>A happy life isn't a life without stress, it's a life of meaningful stress. Also, everything comes with inherent sacrifice to it. Whatever makes us feel good, also inevitably makes us feel bad.</p>
+</div>
+
+<div class="box">
+<p>If you are afraid to say "no", your "yes" means nothing. You are just a reflection of the preferences and demands of people around you. If you don't decide who you are, others will decide it for you.</p>
+</div>
+
+<div class="box">
+<p>Trust is the currency of all relationships. Every failed relationship is mainly caused by broken trust. Honesty and integrity are significant in relationships and happiness.</p>
+</div>
+</div>
+</section>
+
+
+
+</body>
+</html>

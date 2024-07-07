@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device=width, initial-scale=1.0">
+    <title>My Friends</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --gold:#c9a14d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            box-sizing: border-box;
+            font-family: 'Josefin Sans', sans-serif;
+            outline: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: .2s linear;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 6rem;
+            overflow-x: hidden;
+            background: #C0C0C0;
+        }
+
+        section {
+            padding: 2px 9%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            transform-style: preserve-3d;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 2.5rem;
+            color: white;
+            padding: 1rem;
+            margin: 2rem 0;
+            background: #222;
+			text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            color: var(--gold);
+        }
+
+        .heading span {
+            color: var(--gold);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 5px 10px rgba(0,0,0,.1);
+            padding: 0px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+
+        header .logo {
+            font-weight: bolder;
+            font-size: 25px;
+            color: black;
+        }
+
+        header .logo span {
+            color: var(--gold);
+        }
+
+        header .navbar ul {
+            list-style: none;
+        }
+
+        header .navbar ul li {
+            position: relative;
+            float: left;
+        }
+
+        header .navbar ul li a {
+            font-size: 20px;
+            padding: 20px;
+            color: #333;
+            display: block;
+        }
+
+        header .navbar ul li a:hover {
+            background: #444;
+            color: var(--gold);
+        }
+
+        header .navbar ul li ul {
+            position: absolute;
+            left: 0;
+            width: 200px;
+            background: #fff;
+            display: none;
+        }
+
+        header .navbar ul li ul li {
+            width: 100%;
+            border-top: 1px solid rgba(0,0,0,.1);
+        }
+
+        header .navbar ul li ul li ul {
+            left: 200px;
+            top: 0;
+        }
+
+        header .navbar ul li:focus-within > ul,
+        header .navbar ul li:hover > ul {
+            display: initial;
+        }
+
+        #menu-bar {
+            display: none;
+        }
+
+        header label {
+            font-size: 20px;
+            color: #333;
+            cursor: pointer;
+            display: none;
+        }
+
+        .active {
+            background-color: #808080;
+        }
+
+        .home {
+            display: flex;
+            align-items: center;
+            min-height: 70vh;
+            background: url(images/header4.jpg) no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .home .content {
+            max-width: 50rem;
+        }
+
+        .home .content h3 {
+            font-size: 4rem;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .home .content span {
+            font-size: 1.8rem;
+            color: var(--gold);
+            padding: 1rem 0;
+            line-height: 1.5;
+			text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+			text-transform: none;
+        }
+
+        .home .content p {
+            font-size: 1.3rem;
+            color: white;
+            padding: 1rem 0;
+            line-height: 1.5;
+			text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+			text-transform: none;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 6px;
+        }
+
+        .gallery-item {
+            padding: 0 6px;
+            float: left;
+            width: 24.99999%;
+            margin: 5px 0;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .desc {
+            padding: 15px;
+            text-align: center;
+        }
+
+        @media only screen and (max-width: 700px) {
+            .gallery-item {
+                width: 49.99999%;
+                margin: 6px 0;
+            }
+        }
+
+        @media only screen and (max-width: 500px) {
+            .gallery-item {
+                width: 100%;
+            }
+        }
+
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        @media (max-width: 991px) {
+            html {
+                font-size: 55%;
+            }
+
+            header {
+                padding: 2rem;
+            }
+
+            header label {
+                display: initial;
+            }
+
+            header .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #fff;
+                border-top: 1px solid rgba(0,0,0,.1);
+                display: none;
+            }
+
+            header .navbar ul li {
+                width: 100%;
+            }
+
+            header .navbar ul li ul {
+                position: relative;
+                width: 100%;
+            }
+
+            header .navbar ul li ul li {
+                background: #eee;
+            }
+
+            header .navbar ul li ul li ul {
+                width: 100%;
+                left: 0;
+            }
+
+            #menu-bar:checked ~ .navbar {
+                display: initial;
+            }
+
+            section {
+                padding: 2rem;
+            }
+
+            .home {
+                background-position: left;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .home .content h3 {
+                font-size: 3.5rem;
+            }
+
+            .home .content span {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            html {
+                font-size: 50%;
+            }
+
+            .heading {
+                font-size: 2.5rem;
+            }
+        }
+
+        .experiences .image-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .experiences .image {
+            box-shadow: 0 0 20px white;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+
+        .experiences .image img {
+            border-radius: 5px;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .experiences .image:hover img {
+            transform: scale(1.2);
+            z-index: 2;
+        }
+
+        .experiences .image:hover {
+            box-shadow: 0 0 30px white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Sha<span>za</span></a>
+        <input type="checkbox" id="menu-bar">
+        <label for="menu-bar">Menu</label>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-me.html">About Me</a></li>
+                <li><a href="family.html">My Family</a></li>
+                <li><a href="#" class="active">Education & Experiences</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="home" id="home">
+        <div class="content">
+            <h3>Education & Experiences</h3>
+            <span>Empowering minds through education and enriching lives through experiences.</span>
+            <p>"O Allah, I seek refuge in you from knowledge that does not benefit, from a heart that is not reverent, from a soul that is not content, and from a supplication that is not answered." - Sahih Muslim: 2722</p>
+        </div>
+    </section>
+
+    <section class="picture" id="picture">
+        <h1 class="heading"><span> Early </span> Education </h1>
+    </section>
+
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <a target="_blank">
+                <img src="images/skh.jpg" alt="SK Hamzah 1">
+            </a>
+            <div class="desc">
+                <h2>SK Hamzah 1</h2>
+                <p>2009-2015</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <a target="_blank">
+                <img src="images/smkh.png" alt="SMK Hamzah 1">
+            </a>
+            <div class="desc">
+                <h2>SMK Hamzah 1</h2>
+                <p>2016</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <a target="_blank">
+                <img src="images/smkh2.jpg" alt="SMK Hamzah 2">
+            </a>
+            <div class="desc">
+                <h2>SMK Hamzah 2</h2>
+                <p>2016 - 2018</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <a target="_blank" href="img_mountains.jpg">
+                <img src="images/smkm.jpg" alt="SMK Machang">
+            </a>
+            <div class="desc">
+                <h2>SMK Machang</h2>
+                <p>2019 - 2020</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <a target="_blank">
+                <img src="images/uitm.jpg" alt="UiTM Machang">
+            </a>
+            <div class="desc">
+                <h2>UiTM Machang</h2>
+                <p>2021 - 2024</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <section class="experiences" id="picture">
+        <h1 class="heading"><span> Experiences </span></h1>
+        <h3 align="center">During the final phase of my diploma, I completed a two-month internship as a librarian. This invaluable experience significantly enriched my knowledge and deepened my understanding of my field study. I not only sharpened my social skills and fostered strong relationships with colleagues but also undertook significant projects that enhanced my understanding of library operations. One notable achievement was handling a special project to ensure accurate and visually compelling information displays throughout the library, which underscored my attention to detail and commitment to improving visitor experiences. Moreover, I gained profound insights into library systems—from cataloging and archival management to reader services—deepening my appreciation for how libraries function to serve their communities effectively.</h3>
+        <div class="image-container">
+            <div class="image">
+                <img src="images/internship1.jpg" alt="Internship 1">
+            </div>
+            <div class="image">
+                <img src="images/internship2.jpg" alt="Internship 2">
+            </div>
+            <div class="image">
+                <img src="images/internship3.jpg" alt="Internship 3">
+            </div>
+        </div>
+		<div class="image-container">
+            <div class="image">
+                <img src="images/internship4.jpg" alt="Internship 1">
+            </div>
+            <div class="image">
+                <img src="images/internship5.jpg" alt="Internship 2">
+            </div>
+            <div class="image">
+                <img src="images/internship6.jpg" alt="Internship 3">
+            </div>
+        </div>
+    </section>
+</body>
+</html>
